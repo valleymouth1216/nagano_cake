@@ -11,6 +11,48 @@
   </head>
 
   <body>
+   <header>
+       <div class="container">
+      
+          <span>ロゴ</span>
+
+      <div>
+       <ul >
+        <% if admin_signed_in? %>
+         <li>商品一覧</li>
+         <li>会員一覧</li>
+         <li>注文履歴一覧</li>
+         <li>
+          <%= link_to admin_genres_path do %>
+          ジャンル一覧
+          <% end %>
+          </li>
+         <li>
+           <%= link_to destroy_admin_session_path,method: :delete do %>
+           ログアウト
+           <% end%>
+         </li>
+        <% else %>
+        
+         <li>About</li>
+         <li>商品一覧</li>
+         <li>新規登録</li>
+         <li>
+           <%= link_to new_admin_session_path do %>
+            ログイン
+           <% end %>
+         </li>
+            
+        <% end %>    
+       </ul>
+       </div>
+       </div>
+
+   </header>
+
+ <main>
+<p id="notice"><%= notice %></p>
     <%= yield %>
+</main>
   </body>
 </html>
