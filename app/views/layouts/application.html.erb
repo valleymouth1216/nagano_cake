@@ -19,8 +19,14 @@
       <div>
        <ul >
         <% if admin_signed_in? %>
-         <li>商品一覧</li>
+         <li>
+          <%= link_to admin_items_path do %>
+          商品一覧
+          <% end %>
+         </li>
+         <%= link_to admin_customers_path do %>
          <li>会員一覧</li>
+         <% end %>
          <li>注文履歴一覧</li>
          <li>
           <%= link_to admin_genres_path do %>
@@ -30,8 +36,9 @@
          <li>
            <%= link_to destroy_admin_session_path,method: :delete do %>
            ログアウト
-           <% end%>
+           <% end %>
          </li>
+         
         <% else %>
         
          <li>About</li>

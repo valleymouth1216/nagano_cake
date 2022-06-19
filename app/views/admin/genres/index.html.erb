@@ -1,6 +1,17 @@
 <h1>ジャンル一覧・追加</h1>
 
+
 <%= form_with model:@genre,url:admin_genres_path do |f| %>
+
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <label for="name">ジャンル</label>
 <%= f.text_field :name %>
 
