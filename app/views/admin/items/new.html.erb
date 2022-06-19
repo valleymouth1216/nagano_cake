@@ -2,6 +2,15 @@
 
 <%= form_with model:@item,url:admin_items_path do |f| %>
 
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました。
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div>
 <label for="image">商品画像</label>
  <%= f.attachment_field :image,placeholder:"ファイルを選択",accept:"image/*"  %>

@@ -4,7 +4,7 @@
 <%= form_with model:@genre,url:admin_genres_path do |f| %>
 
 <% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
+  <%= @genre.errors.count %>件のエラーが発生しました。
   <ul>
     <% @genre.errors.full_messages.each do |message| %>
       <li><%= message %></li>
