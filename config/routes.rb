@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
-
+  root to: 'public/homes#top'
+  get 'about'=>"public/homes#about"
   
-
-
  devise_for :admin,skip: [:passwords],  controllers: {
   sessions: "admin/sessions",
    registrations: "admin/registrations"
  }
-  devise_for :customers
+ 
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
   
     namespace :admin do
     resources:genres,only:[:edit,:create,:index,:update]
