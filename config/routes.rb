@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
 
+
+ get 'customers/:id'=>"public/customers#show",as:"customers/my_page"
+
+  namespace :public do
+    get 'customers/edit'
+    get 'customers/unsubscribe'
+  end
+
   root to: 'public/homes#top'
   get 'about'=>"public/homes#about"
-  
+
  devise_for :admin,skip: [:passwords],  controllers: {
   sessions: "admin/sessions",
    registrations: "admin/registrations"
  }
- 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  
+
     namespace :admin do
     resources:genres,only:[:edit,:create,:index,:update]
     resources:items,only:[:new,:index,:create,:show,:edit,:update]
