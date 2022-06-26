@@ -1,0 +1,53 @@
+<table>
+  <thead>
+    <tr>ジャンル検索</tr>
+  </thead>
+<tbody>
+    <% @genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+      </td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+
+<h1>商品詳細画面</h1>
+<table border="1">
+  <h2><%= @item.name %></h2>
+<tr>
+<td rowspan="4"><%= attachment_image_tag @item, :image, format: 'jpeg', size:"300x200" %></td>
+<td><%= @item.introduction %></td>
+</tr>
+
+
+<tr>
+<td>ジャンル：<%= link_to @item.genre.name,items_path(genre_id: @item.genre.id) %></td>
+</tr>
+
+<tr>
+<td><%= number_to_currency(@item.price, format: "%u%n", unit: "￥") %>(税込み)
+      <% if @item.is_active==true %>
+       販売中
+       <% else %>
+       販売停止中
+      <% end %>
+      </td>
+</tr>
+
+<tr>
+<td>
+<%= form_with model:@cart_item,url:cart_items_path do |f| %>
+
+<%= f.hidden_field :item_id, :value => @item.id %>
+
+<p>数量を選択してください。</p>
+<%= f.select :amount, *[1..10],placeholder:"個数選択" %>
+
+<%= f.submit "カートに入れる" %>
+<% end %>
+
+      </td>
+</tr>
+</table>

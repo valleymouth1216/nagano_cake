@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
 
 
- get 'customers/:id'=>"public/customers#show",as:"customers/my_page"
 
-  namespace :public do
-    get 'customers/edit'
-    get 'customers/unsubscribe'
+ #配送先
+   scope module: :public do
+    resources :addresses,only:[:edit,:create,:index,:update,:destroy]
+    resources :items,only:[:index,:show]
+    resources :cart_items,only:[:index,:update,:create]
   end
+
+
+
+ #顧客の会員
+ get 'customers/my_page'=>"public/customers#show"
+ get 'customers/edit'=>"public/customers#edit"
+ patch "customers" => "public/customers#update"
+ get 'customers/unsubscribe'=>"public/customers#unsubscribe"
+ patch "customers/withdrawal" => "public/customers#withdrawal"
 
   root to: 'public/homes#top'
   get 'about'=>"public/homes#about"

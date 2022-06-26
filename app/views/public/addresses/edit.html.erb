@@ -1,0 +1,23 @@
+
+<h1>配送先編集</h1>
+
+
+<%= form_with model:@address,url:address_path(@address.id), method: :patch do |f| %>
+
+
+  <div class="field">
+    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>&emsp;
+    <%= f.text_field :postal_code,placeholder:"0000000"%>
+  </div>
+  <div class="field">
+    <%= f.label :address, "住所" %>&emsp;
+    <%= f.text_field :address,placeholder:"東京都"%>
+  </div>
+  <div class="field">
+    <%= f.label :name, "宛名" %>&emsp;
+    <%= f.text_field :name,placeholder:"令和"%>
+  </div>
+
+
+<%= f.submit "変更内容を保存",class:"btn btn-sm btn-success" %>
+<% end %>

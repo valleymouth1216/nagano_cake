@@ -24,15 +24,21 @@
           商品一覧
           <% end %>
          </li>
+
+         <li>
          <%= link_to admin_customers_path do %>
-         <li>会員一覧</li>
+         会員一覧
          <% end %>
-         <li>注文履歴一覧</li>
+         </li>
+
+         <li>注文履歴一覧 未実装</li>
+
          <li>
           <%= link_to admin_genres_path do %>
           ジャンル一覧
           <% end %>
           </li>
+
          <li>
            <%= link_to destroy_admin_session_path,method: :delete do %>
            ログアウト
@@ -41,19 +47,18 @@
 
          <% elsif customer_signed_in? %>
          <li>
-          <%= link_to admin_items_path do %>
-          商品一覧
+          <%= link_to customers_my_page_path do %>
+          マイページ
           <% end %>
          </li>
-         <%= link_to admin_customers_path do %>
-         <li>会員一覧</li>
+
+         <li><%= link_to items_path(genre_id: 1) do %>
+         商品一覧
          <% end %>
-         <li>注文履歴一覧</li>
-         <li>
-          <%= link_to admin_genres_path do %>
-          ジャンル一覧
-          <% end %>
-          </li>
+         </li>
+
+         <li>カート　未実装</li>
+
          <li>
            <%= link_to destroy_customer_session_path,method: :delete do %>
            ログアウト
@@ -67,13 +72,23 @@
           About
           <% end %>
          </li>
-         <li>商品一覧</li>
-         <li>新規登録</li>
+
+         <li><%= link_to items_path(genre_id: 1) do %>
+         商品一覧
+         <% end %>
+
+         <li>
+           <%= link_to new_customer_registration_path do %>
+           新規登録
+         <% end %>
+         </li>
+
          <li>
            <%= link_to new_customer_session_path do %>
             ログイン
            <% end %>
          </li>
+
           <li>
            <%= link_to new_admin_session_path do %>
            管理 ログイン後で消す！！！
