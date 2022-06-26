@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    scope module: :public do
     resources :addresses,only:[:edit,:create,:index,:update,:destroy]
     resources :items,only:[:index,:show]
-    resources :cart_items,only:[:index,:update,:create]
+    resources :cart_items,only:[:index,:update,:create,:destroy]
   end
 
 
