@@ -38,16 +38,19 @@
 
 <tr>
 <td>
+    <% if @item.is_active==true %>
 <%= form_with model:@cart_item,url:cart_items_path do |f| %>
-
 <%= f.hidden_field :item_id, :value => @item.id %>
 
 <p>数量を選択してください。</p>
-<%= f.select :amount, *[1..10],placeholder:"個数選択" %>
+ <%= f.label :amount, "個数選択"%>
+ <%= f.select :amount, *[1..10] %>
 
 <%= f.submit "カートに入れる" %>
 <% end %>
-
+ <% else %>
+ &emsp;
       </td>
+      <% end %>
 </tr>
 </table>
