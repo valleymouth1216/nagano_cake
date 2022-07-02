@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     resources :items,only:[:index,:show]
     resources :cart_items,only:[:index,:update,:create,:destroy]
     delete 'cart_items'=>"cart_items#destroy_all"
-    resources :orders,only:[:index,:new,:create,:show]
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
+    resources :orders,only:[:index,:new,:create,:show]
+
   end
 
 
