@@ -30,6 +30,7 @@
 <p>お届け先</p> <p><%= @order.delivery_address %> <br><%= @order.name %> </p>
 
 <%= form_with model:@order,url:orders_path,method: :post do |f|%>
+
 <%= f.hidden_field :name, :value =>@order.name %>
 <%= f.hidden_field :address, :value =>@order.address %>
 <%= f.hidden_field :payment_method, :value =>@order.payment_method %>
@@ -38,4 +39,5 @@
 <%= f.hidden_field :customer_id, :value =>current_customer.id %>
 <%= f.hidden_field :shipping_cost, :value => @shipping_cost %>
 <%= f.submit "注文を確定する" %>
+
 <% end %>
