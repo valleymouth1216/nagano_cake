@@ -17,6 +17,33 @@ ja:
         in_production: "製作中"
         production_completed: "製作完了"
   activerecord:
+    models:
+      genre: "ジャンル名"
+    attributes:
+      customer:
+        last_name: "姓"
+        first_name : "名"
+        last_name_kana : "姓カナ"
+        first_name_kana : "名カナ"
+        email : "メールアドレス"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number : "電話番号"
+      order:
+        name: "配送先氏名"
+        postal_code: "配送先郵便番号"
+        address: "配送先住所"
+      address:
+        name: "宛名"
+        postal_code: "郵便番号"
+        address: "住所"
+      item:
+        name: "商品名"
+        introduction: "商品説明文"
+        price: "税抜き価格"
+        image: "画像"
+      genre:
+        name: "ジャンル名"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

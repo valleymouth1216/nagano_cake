@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+    namespace :admin do
+    resources:genres,only:[:edit,:create,:index,:update]
+    resources:items,only:[:new,:index,:create,:show,:edit,:update]
+    resources:customers,only:[:index,:show,:edit,:update]
+    resources:orders,only:[:show,:update] do
+    resources :order_details, only: [:update]
+    end
+  end
+  get 'admin'=>"admin/homes#top"
+
 
 
 
@@ -12,7 +22,6 @@ Rails.application.routes.draw do
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
     resources :orders,only:[:index,:new,:create,:show]
-
   end
 
 
@@ -37,11 +46,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-    namespace :admin do
-    resources:genres,only:[:edit,:create,:index,:update]
-    resources:items,only:[:new,:index,:create,:show,:edit,:update]
-    resources:customers,only:[:index,:show,:edit,:update]
-  end
 
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

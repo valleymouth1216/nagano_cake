@@ -8,7 +8,7 @@
           <p>商品名 :<%= @item.name  %></p>
           <p>商品説明 :<%= @item.introduction %> <br></br></p>
           <p>ジャンル :<%= @item.genre.name  %></p>
-          <p>税込価格 :<%= @item.price*1.1  %>(<%= @item.price  %>)円<br>(税抜価格)</br></p>
+          <p>税込価格 :<%= (@item.price*1.1).floor  %>(<%= (@item.price).floor  %>)円<br>(税抜価格)</br></p>
           <p>販売ステータス :
           <% if @item.is_active==true %>
             販売中

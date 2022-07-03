@@ -6,7 +6,9 @@
     <% @genres.each do |genre| %>
     <tr>
       <td>
+        <% if genre.items.present? %>
         <%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %>
+        <% end %>
       </td>
     </tr>
     <% end %>
@@ -22,7 +24,7 @@
    <% end %>
 </p>
 <p>商品名：<%= item.name %></p>
-<p>価格：<%= item.price %></p>
+<p>価格：<%= number_to_currency(item.price, format: "%u%n", unit: "￥") %></p>
 <% end %>
 <%= paginate @items %>
 
@@ -35,7 +37,7 @@
    <% end %>
 </p>
 <p>商品名：<%= item.name %></p>
-<p>価格：<%= item.price %></p>
+<p>価格：<%= number_to_currency(item.price, format: "%u%n", unit: "￥") %></p>
 <% end %>
 <%= paginate @items %>
 
