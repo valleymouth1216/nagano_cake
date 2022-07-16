@@ -1,23 +1,49 @@
-<h1>商品詳細</h1>
+<div class='container'>
 
-<table>
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">商品詳細</span>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-3">
+     <%= attachment_image_tag @item, :image, format: 'jpeg',size:"300x200" %>
+    </div>
+
+  <div class="col-lg-8 offset-lg-1">
+   <table style="table-layout:fixed;width:100%;">
     <tr>
-        <td><%= attachment_image_tag @item, :image, format: 'jpeg', size:"300x200" %></td>
-        <td>&nbsp;</td>
-        <td>
-          <p>商品名 :<%= @item.name  %></p>
-          <p>商品説明 :<%= @item.introduction %> <br></br></p>
-          <p>ジャンル :<%= @item.genre.name  %></p>
-          <p>税込価格 :<%= (@item.price*1.1).floor  %>(<%= (@item.price).floor  %>)円<br>(税抜価格)</br></p>
-          <p>販売ステータス :
-          <% if @item.is_active==true %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
-          </p>
-        </td>
+      <td class="font-weight-bold col-sm-3">商品名</td>
+      <td style="word-wrap:break-word;"><%= @item.name  %></td>
     </tr>
-</table>
+    <tr>
+      <td class="font-weight-bold col-sm-3">商品説明</td>
+      <td style="word-wrap:break-word;"><%= @item.introduction %></td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold col-sm-3">ジャンル</td>
+      <td style="word-wrap:break-word;"><%= @item.genre.name  %></td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold col-sm-3">税込価格<br>(税抜価格)</br></td>
+      <td style="word-wrap:break-word;"><%= (@item.price*1.1).floor.to_s(:delimited) %>(<%= (@item.price).floor.to_s(:delimited) %>)円</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold col-sm-3">販売ステータス</td>
+      <% if @item.is_active==true %>
+      <td class="font-weight-bold"><font color="green">販売中</td>
+      <% else %>
+      <td class="font-weight-bold"><font color="gray">販売停止中</td>
+      <% end %>
+    </tr>
+    <tr><td>&thinsp;</td></tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to "編集する",edit_admin_item_path(@item.id),class:"col-sm-3 offset-md-1 btn btn-success btn-lg " %>
+      </td>
+    </tr>
+  </table>
 
-<%= link_to "編集する",edit_admin_item_path(@item.id),class:"btn btn-sm btn-success" %>
+  </div>
+  </div>
+</div>

@@ -1,46 +1,61 @@
-<h1>商品編集</h1>
+<div class='container'>
 
-<%= form_with model:@item,url:admin_item_path(@item.id) do |f| %>
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">商品編集</span>
+  </div>
 
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>件のエラーが発生しました。
+  <%= form_with model:@item,url:admin_item_path(@item.id) do |f| %>
+
+  <% if @item.errors.any? %>
   <ul>
     <% @item.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
-<% end %>
+  <% end %>
 
-<div>
-<label for="image">商品画像</label>
- <%= f.attachment_field :image,placeholder:"ファイルを選択",accept:"image/*"  %>
+    <form class="form-horizontal">
+    <div class="form-group">
+      <%= f.label :image,"商品画像" ,class:"col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.attachment_field :image,placeholder:"ファイルを選択",accept:"image/*" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name,"商品名" ,class:"col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.text_field :name ,placeholder:"商品名",class: "col-lg-5"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction,"商品説明" ,class:"col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.text_area :introduction,rows:10,class:"col-lg-5",placeholder:"ここに説明を記述します。" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :genre_id,"ジャンル" ,class:"col-lg-2 font-weight-bold" %>
+      <%= f.collection_select :genre_id,Genre.all,:id,:name, include_blank: "--選択して下さい--　　　　　　　　　　　　　　　　　　　"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price,"税抜価格" ,class:"col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.text_field :price,class:"col-lg-5" ,placeholder:"1000" %>円
+    </div>
+
+    <div class="form-group">
+      <%= f.label :is_active,"販売ステータス" ,class:"col-lg-2 col-form-label font-weight-bold" %>
+      <%= f.radio_button :is_active, true, checked: true %>&thinsp;販売中
+      <span>&emsp;</span>
+      <%= f.radio_button :is_active, false %>&thinsp;販売停止中
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-7 text-center">
+      <div class="actions">
+        <%= f.submit "変更を保存",class:"col-md-3 btn btn-success btn-lg " %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+ </div>
+
+
 </div>
-
-<div>
-<label for="name">商品名</label>
-<%= f.text_field :name ,placeholder:"商品名" %>
-</div>
-
-<div>
-<label for="introduction">商品説明</label>
-<%= f.text_area :introduction,rows:10,cols:50,placeholder:"ここに説明を記述します。" %>
-</div>
-
-<div>
-<label for="genre_id">ジャンル</label>
-<%= f.collection_select :genre_id,Genre.all,:id,:name, include_blank: "選択して下さい"  %>
-</div>
-
-
-<div>
-<label for="price">税抜価格</label>
-<%= f.text_field :price ,placeholder:"1000" %>
-</div>
-
-<div>
-<label for="is_active">販売ステータス</label>
-<%= f.radio_button :is_active, true, checked: true %>販売中<%= f.radio_button :is_active, false %>販売停止中
-</div>
-
-<%= f.submit "変更を保存",class:"btn btn-sm btn-success" %>
-<% end %>

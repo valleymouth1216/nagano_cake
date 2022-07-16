@@ -1,18 +1,22 @@
-<h1>注文履歴一覧</h1>
+<div class='container'>
 
-<table border="1">
-  <thead>
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">注文履歴一覧</span>
+  </div>
+
+<table class="table">
+  <thead class="bg-light">
     <th>購入日時</th>
     <th>購入者</th>
     <th>注文個数</th>
     <th>注文ステータス</th>
     <th>製作ステータス</th>
   </thead>
-  <tbody>
+  <tbody style="border-bottom: 1px solid silver;">
     <% @orders.each do |order| %>
     <% amount=order.order_details.sum(:amount)%>
     <tr>
-      <td><%= link_to order.created_at.strftime('%Y/%m/%d %X'),admin_order_path(order.id) %></td>
+      <td><%= link_to order.created_at.strftime('%Y/%m/%d %X'),admin_order_path(order.id),:style =>"color:black; border-bottom: solid 1px black;" %></td>
       <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
       <td><%= amount %></td>
       <td><%= order.order_status_i18n %></td>
@@ -29,3 +33,5 @@
 </table>
 
  <%= paginate @orders %>
+ 
+ </div>

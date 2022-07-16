@@ -1,20 +1,35 @@
-<h1>ジャンル編集</h1>
+<div class='container'>
 
-<%= form_with model:@genre,url:admin_genre_path(@genre.id) do |f| %>
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">ジャンル編集</span>
+  </div>
 
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <%= form_with model:@genre,url:admin_genre_path(@genre.id) do |f| %>
 
-<div>
-<%= f.label :name, "ジャンル名" %>
-<%= f.text_field :name %>
+  <% if @genre.errors.any? %>
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-2 d-flex align-items-center">
+        <%= f.label :name,"ジャンル名" ,class:" font-weight-bold mb-2" %>
+      </div>
+      <div class="col-lg-2">
+        <%= f.text_field :name,id:"name",class:"form-control-lg mb-2" ,placeholder:"ジャンル名" %>
+      </div>
+      <div class="col-lg-2 offset-lg-2 d-flex justify-content-center">
+        <%= f.submit "変更を保存",class:"btn btn-success btn-lg mb-2"  %>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
 </div>
 
-<%= f.submit "変更を保存" ,class:"btn btn-sm btn-success"%>
-<% end %>
+

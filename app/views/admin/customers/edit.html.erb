@@ -1,53 +1,59 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h1>
+<div class='container'>
 
-<p>会員ID 　　　　<%= @customer.id %></p>
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</span>
+  </div>
 
-<%= form_with model:@customer,url:admin_customer_path(@customer.id) do |f| %>
-
-<% if @customer.errors.any? %>
-  <%= @customer.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
+  <div class="mx-5" >
+    <table>
+      <tr height="40">
+        <th class="col-md-2" >会員ID</th>
+        <td class="col-md-2"><%= @customer.id %></td>
+      </tr>
+    <%= form_with model:@customer,url:admin_customer_path(@customer.id) do |f| %>
+    <% if @customer.errors.any? %>
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
       <li><%= message %></li>
+      <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-
-<div>
-<label>氏名　　　　　</label>
-<%= f.text_field :last_name %><span>&emsp;&emsp;</span><%= f.text_field :first_name %>
+    <div class="form-group">
+      <tr height="40">
+        <th class="col-md-2 "><%= f.label :last_name,"氏名" %></th>
+        <td class="col-md-10"><%= f.text_field :last_name %><span>&emsp;&emsp;</span><%= f.text_field :first_name %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-2"><%= f.label :last_name_kana,"フリガナ" %></th>
+        <td class="col-md-10"><%= f.text_field :last_name_kana %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-2"><%= f.label :postal_code,"郵便番号" %></th>
+        <td class="col-md-10"><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-2"><%= f.label :address,"住所" %></th>
+        <td class="col-md-10"><%= f.text_field :address,:size => "50*30" %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-2"><%= f.label :name,"電話番号" %></th>
+        <td class="col-md-10"><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-2"><%= f.label :email,"メールアドレス" %></th>
+        <td class="col-md-10"><%= f.text_field :email ,:size => "50*30" %></td>
+      </tr>
+      <tr height="40">
+        <th class="col-md-3"><%= f.label :is_deleted,"会員ステータス" %></th>
+        <td class="col-md-9"><%= f.radio_button :is_deleted, false, checked: true %>&thinsp;有効<span>&emsp;</span><%= f.radio_button :is_deleted, true %>&thinsp;退会</td>
+      </tr>
+    </div>
+    <div class="mx-5" >
+      <tr height="40">
+        <th class="py-5 col-md-2"></th>
+        <td class="col-md-10"><%= f.submit "変更を保存",class:"btn btn-lg btn-success" %></td>
+      </tr>
+    <% end %>
+    </table>
+    </div>
 </div>
-
-<div>
-<label>フリガナ　　　</label>
-<%= f.text_field :last_name_kana %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %>
-</div>
-
-<div>
-<label>郵便番号　　　</label>
-<%= f.text_field :postal_code %>
-</div>
-
-<div>
-<label>住所　　　　　</label>
-<%= f.text_field :address,cols:200 %>
-</div>
-
-<div>
-<label>電話番号　　　</label>
-<%= f.text_field :telephone_number %>
-</div>
-
-<div>
-<label>メールアドレス</label>
-<%= f.text_field :email %>
-</div>
-
-<div>
-<label>会員ステータス</label>
-<%= f.radio_button :is_deleted, false, checked: true %>有効<%= f.radio_button :is_deleted, true %>退会
-</div>
-
-<%= f.submit "変更を保存",class:"btn btn-sm btn-success" %>
-<% end %>
-

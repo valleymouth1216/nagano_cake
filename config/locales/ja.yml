@@ -7,7 +7,7 @@ ja:
       order_status:
         waiting_payment: "入金待ち"
         confirmation_payment: "入金確認"
-        in_production: "製作中,"
+        in_production: "製作中"
         preparing_shipping: "発送準備中"
         shipped: "発送済み"
     order_detail:
@@ -42,7 +42,7 @@ ja:
         introduction: "商品説明文"
         price: "税抜き価格"
         image: "画像"
-      genre:
+      genre: 
         name: "ジャンル名"
     errors:
       messages:

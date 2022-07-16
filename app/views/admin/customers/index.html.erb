@@ -1,24 +1,28 @@
-<h1>会員一覧</h1>
+<div class='container'>
 
-<table class="table" cellpadding="10">
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">会員一覧</span>
+  </div>
+
+<table class="table">
   <thead>
     <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス </th>
-      <th>ステータス</th>
+      <th class="bg-light">会員ID</th>
+      <th class="bg-light">氏名</th>
+      <th class="bg-light">メールアドレス </th>
+      <th class="bg-light">ステータス</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody style="border-bottom: 1px solid silver;">
     <% @customers.each do |customer| %>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= link_to "#{customer.last_name+customer.first_name}",admin_customer_path(customer.id) %></td>
-      <td> <%= customer.email %></td>
+      <td><%= link_to "#{customer.last_name+customer.first_name}",admin_customer_path(customer.id),:style =>"color:black; border-bottom: solid 1px black;" %></td>
+      <td><%= customer.email %></td>
       <% if customer.is_deleted==false %>
-       <td>有効</td>
+       <td class="font-weight-bold" ><font color="green">有効</td>
        <% else %>
-       <td>退会</td>
+       <td class="font-weight-bold"><font color="gray">退会</td>
       <% end %>
     </tr>
     <% end %>
@@ -26,3 +30,6 @@
 </table>
 
 <%= paginate @customers %>
+
+
+</div>

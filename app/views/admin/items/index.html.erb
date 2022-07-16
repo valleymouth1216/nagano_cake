@@ -1,33 +1,41 @@
-<h1>商品一覧</h1>
-          <%= link_to new_admin_item_path do %>
-          +
-          <% end %>
+<div class='container'>
 
-<table class="table" cellpadding="10">
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格 </th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="row py-5 body heading">
+     <div class="col-8">
+      <span class="col-md-3 bg-light" style="font-size : 30pt">商品一覧</span>
+     </div>
+     <div class="col-4">
+     <%= link_to "＋",new_admin_item_path ,class:"shadow-lg btn rounded-circle p-0 btn-light",style:"width:4rem;height:4rem;color:black;font-size : 30pt;"  %>
+  </div>
+    </div>
+
+  <table class="table table-borderless">
+    <thead style="border-top: 1px solid silver;">
+      <tr>
+        <th class="bg-light" >商品ID</th>
+        <th class="bg-light" >商品名</th>
+        <th class="bg-light" >税抜価格 </th>
+        <th class="bg-light" >ジャンル</th>
+        <th class="bg-light" >ステータス</th>
+      </tr>
+    </thead>
+    <tbody style="border-bottom: 1px solid silver;">
     <% @items.each do |item| %>
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.name,admin_item_path(item.id) %></td>
-      <td><%= item.price %></td>
-      <td> <%= item.genre.name %></td>
-      <% if item.is_active==true %>
-       <td>販売中</td>
-       <% else %>
-       <td>販売停止中</td>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name,admin_item_path(item.id),:style =>"color:black; border-bottom: solid 1px black;" %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
+        <td><%= item.genre.name %></td>
+        <% if item.is_active==true %>
+          <td class="font-weight-bold"><font color="green">販売中</td>
+          <% else %>
+          <td class="font-weight-bold"><font color="gray">販売停止中</td>
+          <% end %>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
 
-<%= paginate @items %>
+  <%= paginate @items %>
+
+</div>
