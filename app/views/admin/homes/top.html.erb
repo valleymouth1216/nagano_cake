@@ -1,7 +1,9 @@
 <div class='container'>
 
-  <div class="py-5 body heading">
+  <div class="py-5 body heading ">
+    <div class="font-weight-bold">
     <span class="col-md-3 bg-light" style="font-size : 30pt">注文履歴一覧</span>
+    </div>
   </div>
 
 <table class="table">
@@ -16,7 +18,7 @@
     <% @orders.each do |order| %>
     <% amount=order.order_details.sum(:amount)%>
     <tr>
-      <td><%= link_to order.created_at.strftime('%Y/%m/%d %X'),admin_order_path(order.id),:style =>"color:black; border-bottom: solid 1px black;" %></td>
+      <td><%= link_to order.created_at.strftime('%Y/%m/%d %X'),admin_order_path(order.id),:style =>"color:black; text-decoration: underline;" %></td>
       <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
       <td><%= amount %></td>
       <td><%= order.order_status_i18n %></td>

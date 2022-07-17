@@ -4,15 +4,19 @@
     <span class="col-md-3 bg-light" style="font-size : 30pt">商品編集</span>
   </div>
 
-  <%= form_with model:@item,url:admin_item_path(@item.id) do |f| %>
-
-  <% if @item.errors.any? %>
-  <ul>
-    <% @item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <% if  @item.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
-  </ul>
-  <% end %>
+    
+  <%= form_with model:@item,url:admin_item_path(@item.id) do |f| %>
 
     <form class="form-horizontal">
     <div class="form-group">

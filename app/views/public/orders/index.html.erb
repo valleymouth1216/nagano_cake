@@ -1,4 +1,13 @@
-<h1>注文履歴一覧</h1>
+<div class='container'>
+
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">注文履歴一覧</span>
+  </div>
+
+<% unless @current_customer.orders.present? %>
+<h3>注文履歴がありません。</h3>
+<% else %>
+
 <table border="1">
   <thead>
     <th>注文日</th>
@@ -26,3 +35,8 @@
   </tbody>
 
 </table>
+
+  <% end %>
+  
+  
+  </div>

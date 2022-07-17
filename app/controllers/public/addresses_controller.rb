@@ -37,7 +37,7 @@ class Public::AddressesController < ApplicationController
      address=Address.find(params[:id])
      address.destroy
      redirect_to addresses_path
-     flash[:notice] = "配送先1件."
+     flash[:notice] = "配送先1件削除しました."
   end
   private
 

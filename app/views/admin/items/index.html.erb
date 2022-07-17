@@ -23,7 +23,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name,admin_item_path(item.id),:style =>"color:black; border-bottom: solid 1px black;" %></td>
+        <td><%= link_to item.name,admin_item_path(item.id),:style =>"color:black; text-decoration: underline;" %></td>
         <td><%= item.price.to_s(:delimited) %></td>
         <td><%= item.genre.name %></td>
         <% if item.is_active==true %>
@@ -36,6 +36,6 @@
     </tbody>
   </table>
 
-  <%= paginate @items, theme: 'bootstrap-5' %>
+  <%= paginate @items %>
 
 </div>

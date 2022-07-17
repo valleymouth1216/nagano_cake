@@ -1,2 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+
+.pagination {
+  justify-content: center;
+}
+
+  .alert {
+    color:#262626;
+    background:#FFEBE8;
+    border:2px solid #990000;
+    padding:12px;
+    font-weight:850;
+  }
+  .alert ul {
+    margin-top: 1rem;
+  }
+

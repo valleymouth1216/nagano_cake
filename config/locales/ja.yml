@@ -1,4 +1,11 @@
 ja:
+  views:
+    pagination:
+      first: First<i class="fas fa-angle-double-left"></i>
+      last: Last<i class="fas fa-angle-double-right"></i>
+      previous: Previous<i class="fas fa-angle-left"></i>
+      next: Next<i class="fas fa-angle-right"></i>
+      truncate: "..."
   enums:
     order:
       payment_method:
@@ -19,6 +26,7 @@ ja:
   activerecord:
     models:
       genre: "ジャンル名"
+      customer: "お客様の情報"
     attributes:
       customer:
         last_name: "姓"
@@ -29,6 +37,7 @@ ja:
         postal_code: "郵便番号"
         address: "住所"
         telephone_number : "電話番号"
+        password: "パスワード"
       order:
         name: "配送先氏名"
         postal_code: "配送先郵便番号"
@@ -42,7 +51,7 @@ ja:
         introduction: "商品説明文"
         price: "税抜き価格"
         image: "画像"
-      genre: 
+      genre:
         name: "ジャンル名"
     errors:
       messages:

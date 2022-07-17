@@ -3,8 +3,11 @@
     <span class="col-md-3 bg-light" style="font-size : 30pt">管理者ログイン</span>
   </div>
 
-  <p id="alert"><%= alert %></p>
-
+  <% if flash[:alert] %>
+    <p class="alert alert-danger" role="alert" id="alert"><%= alert %></p>
+  <% end %>
+  
+  
   <div class="form-horizontal" role="form">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">

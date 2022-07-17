@@ -4,15 +4,19 @@
     <span class="col-md-3 bg-light" style="font-size : 30pt">ジャンル編集</span>
   </div>
 
+    <% if  @genre.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    
   <%= form_with model:@genre,url:admin_genre_path(@genre.id) do |f| %>
-
-  <% if @genre.errors.any? %>
-    <ul>
-      <% @genre.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
 
   <div class="form-group">
     <div class="row">

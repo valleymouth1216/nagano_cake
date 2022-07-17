@@ -15,18 +15,4 @@
  */
 
 
-* {
- font-family: "Gill Sans", sans-serif;
-}
-
-table {
-  width: 100%;
-  table-layout: fixed;
-}
-
-table td {
-  /*word-break: break-all;*/
-  overflow-wrap : break-word;
-}
-
 

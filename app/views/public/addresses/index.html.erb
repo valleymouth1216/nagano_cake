@@ -1,4 +1,8 @@
-<h1>配送先登録/一覧</h1>
+<div class='container'>
+
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">配送先登録/一覧</span>
+  </div>
 
 
 <%= form_with model:@address,url:addresses_path do |f| %>
@@ -28,6 +32,9 @@
 <%= f.submit "新規登録" %>
 <% end %>
 
+<% unless @current_customer.addresses.present? %>
+<h3>配送先が登録されていません。</h3>
+<% else %>
 
 <table class="table" cellpadding="10" border="1">
   <thead>
@@ -50,4 +57,4 @@
   </tbody>
 </table>
 
-
+  <% end %>

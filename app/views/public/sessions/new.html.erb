@@ -1,23 +1,44 @@
-<h2>ログイン</h2>
+<div class='container'>
 
+  <div class="py-5 body heading">
+    <h1><span class="col-md-3 bg-light">ログイン</span></h1>
+  </div>
+  
+  <div class="m-3 body heading">
+    <h5><span class="col-md-3 bg-light">会員の方はこちらからログイン</span></h5>
+  </div>
+  
+  <% if flash[:alert] %>
+    <p class="alert alert-danger" role="alert" id="alert"><%= alert %></p>
+  <% end %>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="pl-5">
+      <div class="form-group">
+        <%= f.label :email,"メールアドレス" ,class:"col-lg-2 col-form-label" %>
+        <%= f.email_field :email,id:"email", autofocus: true,class:"col-lg-5" ,autocomplete: "email",placeholder:"sample@example.cpm" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password,"パスワード" ,class:"col-lg-2 col-form-label" %>
+        <%= f.password_field :password,id:"password",class:"col-lg-5",  autocomplete: "current-password" %>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-6 text-center">
+          <div class="actions">
+             <%= f.submit "ログイン",class:"col-md-4 btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-<h3>会員の方はこちらからログイン</h3>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <span>メールアドレス&emsp;&emsp;</span><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"sample@example.com" %>
+  <div class="pb-3"></div>
+  
+  <div class="m-3">
+    <h5><span class="col-md-3 bg-light">会員登録がお済みでない方</span></h5>
+      <div class="pl-5">
+        <p><%= link_to "こちら",new_customer_registration_path,:style =>"text-decoration: underline" %>&emsp;から新規登録を行ってください。</p>
+      </div>
   </div>
 
-  <div class="field">
-    <span>パスワード　　&emsp;&emsp;</span><%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-
-
-  <div class="actions">
-    <%= f.submit "ログイン",class:"btn btn-sm btn-success"  %>
-  </div>
-<% end %>
-
-<h3>会員登録がお済みでない方</h3>
- <p><%= link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。</p>
-
+</div>

@@ -4,16 +4,19 @@
     <span class="col-md-3 bg-light" style="font-size : 30pt">ジャンル一覧・追加</span>
   </div>
 
-  <%= form_with model:@genre,url:admin_genres_path do |f| %>
-      <div class="row">
-    <% if @genre.errors.any? %>
-      <ul>
-        <% @genre.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
+    <% if  @genre.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
-    </div>
+
+  <%= form_with model:@genre,url:admin_genres_path do |f| %>
 
     <div class="form-group">
       <div class="row">

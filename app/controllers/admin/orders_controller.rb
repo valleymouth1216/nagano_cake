@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+    before_action :authenticate_admin!
   def show
     @order=Order.find(params[:id])
     @order_details=OrderDetail.where(order_id: @order.id)
@@ -14,6 +15,7 @@ class Admin::OrdersController < ApplicationController
       @order_details.update(making_status: 1)
     end
     redirect_to admin_order_path(@order.id)
+      flash[:notice] = "注文ステータス更新しました."
   end
 
   private
