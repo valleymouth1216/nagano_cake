@@ -12,110 +12,122 @@
   </head>
 
   <body>
-   <header>
-       <div class="container">
-
-          <span>ロゴ</span>
-
-      <div>
-       <ul >
-        <% if admin_signed_in? %>
-         <li>
-          <%= link_to admin_items_path do %>
-          商品一覧
-          <% end %>
-         </li>
-
-         <li>
-         <%= link_to admin_customers_path do %>
-         会員一覧
-         <% end %>
-         </li>
-
-         <li>
-         <%= link_to admin_path do %>
-         注文履歴一覧
-         <% end %>
-         </li>
-
-
-         <li>
-          <%= link_to admin_genres_path do %>
-          ジャンル一覧
-          <% end %>
-          </li>
-
-         <li>
-           <%= link_to destroy_admin_session_path,method: :delete do %>
-           ログアウト
-           <% end %>
-         </li>
-
-         <% elsif customer_signed_in? %>
-         <li>
-          <%= link_to customers_my_page_path do %>
-          マイページ
-          <% end %>
-         </li>
-
-         <li><%= link_to items_path do %>
-         商品一覧
-         <% end %>
-         </li>
-
-         <li><%= link_to cart_items_path do %>
-         カート
-         <% end %>
-         </li>
-
-         <li>
-           <%= link_to destroy_customer_session_path,method: :delete do %>
-           ログアウト
-           <% end %>
-         </li>
-
-        <% else %>
-
-         <li>
-          <%= link_to about_path do %>
-          About
-          <% end %>
-         </li>
-
-         <li><%= link_to items_path do %>
-         商品一覧
-         <% end %>
-
-         <li>
-           <%= link_to new_customer_registration_path do %>
-           新規登録
-         <% end %>
-         </li>
-
-         <li>
-           <%= link_to new_customer_session_path do %>
-            ログイン
-           <% end %>
-         </li>
-
-          <li>
-           <%= link_to new_admin_session_path do %>
-           管理ログイン用(後で消す！！！)
-           <% end %>
-         </li>
-
-        <% end %>
-       </ul>
-       </div>
-       </div>
-
-   </header>
-
- <main>
-<div class='container'>
-<p class="font-weight-bold"style="font-size : 20pt" id="notice"><%= notice %></p>
-</div>
-    <%= yield %>
-</main>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%= image_tag 'cake.png',size: "60x60" %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <div class="text-right pb-5">
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to admin_items_path,:style =>"color:black;" do %>
+                  商品一覧
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to admin_customers_path,:style =>"color:black;" do %>
+                  会員一覧
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to admin_path,:style =>"color:black;" do %>
+                  注文履歴一覧
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to admin_genres_path,:style =>"color:black;" do %>
+                  ジャンル一覧
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to destroy_admin_session_path,:style =>"color:black;",method: :delete do %>
+                  ログアウト
+                  <% end %>
+                </li>
+              </div>
+            <% elsif customer_signed_in? %>
+              <div class="text-right pb-5">
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to customers_my_page_path,:style =>"color:black;" do %>
+                  マイページ
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to items_path,:style =>"color:black;" do %>
+                  商品一覧
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to cart_items_path,:style =>"color:black;" do %>
+                  カート
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to destroy_customer_session_path,:style =>"color:black;",method: :delete do %>
+                  ログアウト
+                  <% end %>
+                </li>
+              </div>
+            <% else %>
+              <div class="text-right pb-5">
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to about_path,:style =>"color:black;" do %>
+                  About
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to items_path,:style =>"color:black;" do %>
+                  商品一覧
+                  <% end %>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to new_customer_registration_path,:style =>"color:black;" do %>
+                  新規登録
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to new_customer_session_path,:style =>"color:black;" do %>
+                  ログイン
+                  <% end %>
+                </li>
+                <li class="btn btn-light btn-lg" >
+                  <%= link_to new_admin_session_path,:style =>"color:black;" do %>
+                  管理ログイン用(後で消す！！！)
+                  <% end %>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+          </div>
+        </div>
+    </header>
+    
+    
+    <main>
+      <% if flash[:notice] %>
+        <div class='container'>
+          <div class="flash">
+            <p class="font-weight-bold pt-5" style="font-size : 20pt" id="notice"><%= notice %></p>
+          </div>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
+    
+    
+    <footer class="shadow-sm">
+      <div class='container mt-5'>
+        <div class='row'>
+          <div class='mx-auto'>
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    
   </body>
 </html>

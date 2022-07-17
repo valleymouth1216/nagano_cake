@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :order_new?, only: [:new]
+  before_action :order_new?, only: [:new,:show]
   def new
     @order=Order.new
   end

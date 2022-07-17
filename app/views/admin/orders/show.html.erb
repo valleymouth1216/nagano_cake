@@ -25,10 +25,12 @@
       <tr height="40">
         <th class="col">注文ステータス</th>
         <td class="col">
+           <div class="form-group">
             <%= form_with model:@order,url:admin_order_path(@order.id), method: :patch do |f| %>
-            <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
-            <%= f.submit "更新",class:"btn btn-sm btn-success" %>
+              <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+              <%= f.submit "更新",class:"btn btn-sm btn-success" %>
             <% end %>
+            </div>
         </td>
       </tr>
     </table>
@@ -53,11 +55,13 @@
           <td class="text-center"><%= order_detail.order_subtotal.to_s(:delimited) %></td>
           <% @total+=order_detail.order_subtotal %>
           <td class="text-center">
+            <div class="form-group">
             <%= form_with model: order_detail,url:admin_order_order_detail_path(@order.id, order_detail.id), method: :patch do |f| %>
-            <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
-            <span>&thinsp;</span>
-            <%= f.submit "更新",class:"btn btn-sm btn-success" %>
+              <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+              <span>&thinsp;</span>
+              <%= f.submit "更新",class:"btn btn-sm btn-success" %>
             <% end %>
+            </div>
           </td>
         </tr>
         <% end %>
