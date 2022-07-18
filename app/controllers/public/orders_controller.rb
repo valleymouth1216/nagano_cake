@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
-  before_action :order_new?, only: [:new,:show]
+  before_action :authenticate_customer!
+  before_action :order_new?, only: [:new,]
+  
   def new
     @order=Order.new
   end
@@ -63,8 +65,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders=current_customer.orders
-
+    @orders=current_customer.orders.page(params[:page]).per(10)
   end
 
   def show

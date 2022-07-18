@@ -4,7 +4,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address=Address.new
-    @addresses=current_customer.addresses
+    @addresses =current_customer.addresses.page(params[:page]).per(10)
   end
 
   def create
@@ -13,7 +13,7 @@ class Public::AddressesController < ApplicationController
   @address.customer_id=current_customer.id
     if @address.save
     redirect_to addresses_path
-    flash[:notice] = "ジャンル追加しました."
+    flash[:notice] = "配送先登録しました."
     else
     render :index
     end
@@ -27,7 +27,7 @@ class Public::AddressesController < ApplicationController
     @address=Address.find(params[:id])
     if @address.update(address_params)
     redirect_to addresses_path
-    flash[:notice] = "ジャンル更新しました."
+    flash[:notice] = "配送先更新しました."
     else
     render :edit
     end

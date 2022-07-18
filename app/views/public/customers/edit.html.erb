@@ -1,5 +1,10 @@
+<div class='container'>
 
-<h1>会員情報編集</h1>
+
+  <div class="py-5 body heading">
+    <span class="col-md-3 bg-light" style="font-size : 30pt">会員情報編集</span>
+  </div>
+
 
 
 <%= form_with model:@customer,url:customers_path, method: :patch do |f| %>
@@ -50,3 +55,6 @@
 <% end %>
 
 <%= link_to "退会する",customers_unsubscribe_path,class:"btn btn-sm btn-success" %>
+
+
+</div>

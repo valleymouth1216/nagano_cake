@@ -9,7 +9,12 @@
   </div>
   
   <% if flash[:alert] %>
-    <p class="alert alert-danger" role="alert" id="alert"><%= alert %></p>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
+    <p><%= alert %></p>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   <% end %>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
