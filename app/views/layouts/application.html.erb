@@ -17,7 +17,7 @@
         <div class="container">
           <a class="navbar-brand p-3" href="/"><%= image_tag 'cake.png',size: "60x60" %></a>
             <% if customer_signed_in? %>
-              <p class="text-center">ようこそ、<%= current_customer.last_name %>さん！</p>
+              <p class="text-right">ようこそ、<%= current_customer.last_name %>さん！</p>
             <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -6,55 +6,85 @@
   </div>
 
 
-
-<%= form_with model:@customer,url:customers_path, method: :patch do |f| %>
-
-
-<% if @customer.errors.any? %>
-  <%= @customer.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <% if  @customer.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% end %>
 
-<div>
-<label>氏名　　　　　</label>
-<%= f.text_field :last_name %><span>&emsp;&emsp;</span><%= f.text_field :first_name %>
-</div>
 
-<div>
-<label>フリガナ　　　</label>
-<%= f.text_field :last_name_kana %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %>
-</div>
+  <%= form_with model:@customer,url:customers_path, method: :patch do |f| %>
 
-<div>
-<label>郵便番号　　　</label>
-<%= f.text_field :postal_code %>
-</div>
+    <div class="mx-5" >
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :last_name,"氏名",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :last_name %><span>&emsp;&emsp;</span><%= f.text_field :first_name %>
+        </div>
+      </div>
 
-<div>
-<label>住所　　　　　</label>
-<%= f.text_field :address,cols:200 %>
-</div>
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :last_name_kana,"フリガナ",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :last_name_kana %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %>
+        </div>
+      </div>
 
-<div>
-<label>電話番号　　　</label>
-<%= f.text_field :telephone_number %>
-</div>
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :postal_code,"郵便番号",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
 
-<div>
-<label>メールアドレス</label>
-<%= f.text_field :email %>
-</div>
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :address,"住所",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :address,:size => "50*30" %>
+        </div>
+      </div>
 
-<div>
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :name,"電話番号",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :telephone_number %>
+        </div>
+      </div>
 
-<%= f.submit "編集内容を保存",class:"btn btn-sm btn-success" %>
-<% end %>
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :email,"メールアドレス",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :email ,:size => "50*30" %>
+        </div>
+      </div>
 
-<%= link_to "退会する",customers_unsubscribe_path,class:"btn btn-sm btn-success" %>
+    </div>
+
+      <div class="col-md-10 mt-3  text-center">
+        <div class="col-md-10">
+          <%= f.submit "編集内容を保存",class:"btn btn-lg btn-success" %>&emsp; <%= link_to "退会する",customers_unsubscribe_path,class:"btn btn-lg btn-danger" %>        </div>
+      </div>
+    </div>
+
+  <% end %>
 
 
 </div>

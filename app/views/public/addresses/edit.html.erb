@@ -22,7 +22,7 @@
   <%= form_with model:@address,url:address_path(@address.id), method: :patch do |f| %>
 
     <div class="pl-3 field">
-      <div class="row pb-2">
+      <div class="row py-1">
         <div class="col-md-3">
           <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
         </div>
@@ -33,9 +33,9 @@
     </div>
 
     <div class="pl-3 field">
-      <div class="row pb-2">
+      <div class="row py-1">
         <div class="col-md-3">
-          <%= f.label :address, "住所" %>
+          <%= f.label :address, "住所"%>
         </div>
         <div class="col-md-9">
           <%= f.text_field :address,placeholder:"東京都",:size=>"60" %>
