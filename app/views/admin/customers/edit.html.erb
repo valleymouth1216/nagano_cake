@@ -22,47 +22,87 @@
   <%= form_with model:@customer,url:admin_customer_path(@customer.id) do |f| %>
 
     <div class="mx-5" >
-    <table>
-      <tr height="40">
-        <th class="col-md-2" >会員ID</th>
-        <td class="col-md-2"><%= @customer.id %></td>
-      </tr>
-    <div class="form-group">
-      <tr height="40">
-        <th class="col-md-2 "><%= f.label :last_name,"氏名" %></th>
-        <td class="col-md-10"><%= f.text_field :last_name %><span>&emsp;&emsp;</span><%= f.text_field :first_name %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-2"><%= f.label :last_name_kana,"フリガナ" %></th>
-        <td class="col-md-10"><%= f.text_field :last_name_kana %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-2"><%= f.label :postal_code,"郵便番号" %></th>
-        <td class="col-md-10"><%= f.text_field :postal_code %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-2"><%= f.label :address,"住所" %></th>
-        <td class="col-md-10"><%= f.text_field :address,:size => "50*30" %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-2"><%= f.label :name,"電話番号" %></th>
-        <td class="col-md-10"><%= f.text_field :telephone_number %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-2"><%= f.label :email,"メールアドレス" %></th>
-        <td class="col-md-10"><%= f.text_field :email ,:size => "50*30" %></td>
-      </tr>
-      <tr height="40">
-        <th class="col-md-3"><%= f.label :is_deleted,"会員ステータス" %></th>
-        <td class="col-md-9"><%= f.radio_button :is_deleted, false, checked: true %>&thinsp;有効<span>&emsp;</span><%= f.radio_button :is_deleted, true %>&thinsp;退会</td>
-      </tr>
+      
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <span class="font-weight-bold">会員ID</span>
+        </div>
+        <div class="colo-md-10">
+          <%= @customer.id %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :last_name,"氏名",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :last_name,class:"mb-1" %><span>&emsp;&emsp;</span><%= f.text_field :first_name %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :last_name_kana,"フリガナ",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :last_name_kana,class:"mb-1" %><span>&emsp;&emsp;</span><%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :postal_code,"郵便番号",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :address,"住所",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :address,:size => "50*30" %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :name,"電話番号",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :telephone_number %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :email,"メールアドレス",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.text_field :email ,:size => "50*30" %>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-2">
+          <%= f.label :is_deleted,"会員ステータス",class:"font-weight-bold"  %>
+        </div>
+        <div class="colo-md-10">
+          <%= f.radio_button :is_deleted, false, checked: true %>&thinsp;有効<span>&emsp;</span><%= f.radio_button :is_deleted, true %>&thinsp;退会
+        </div>
+      </div>
+
+      <div class="col-md-10 mt-3  text-center">
+        <div class="col-md-10">
+          <%= f.submit "変更を保存",class:"btn btn-lg btn-success" %>
+      </div>
     </div>
-    <div class="mx-5" >
-      <tr height="40">
-        <th class="py-5 col-md-2"></th>
-        <td class="col-md-10"><%= f.submit "変更を保存",class:"btn btn-lg btn-success" %></td>
-      </tr>
     <% end %>
-    </table>
+    
     </div>
+
+
 </div>

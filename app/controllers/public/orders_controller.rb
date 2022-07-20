@@ -65,13 +65,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders=current_customer.orders.page(params[:page]).per(10)
+    @orders=current_customer.orders.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
-    @order=current_customer.orders.find(params[:id])
-    @order_details=OrderDetail.where(order_id: @order.id)
-    @order_total=0
+    if params[:id]=="confirm"
+       redirect_to cart_items_path
+    else  
+       @order=current_customer.orders.find(params[:id])
+       @order_details=OrderDetail.where(order_id: @order.id)
+       @order_total=0
+    end
+
   end
 
 

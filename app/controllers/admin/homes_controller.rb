@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
     before_action :authenticate_admin!
   def top
-    @orders=Order.page(params[:page]).per(11)
+    @orders=Order.order("created_at DESC").page(params[:page]).per(11)
   end
 end

@@ -1,5 +1,6 @@
 <div class='container'>
 
+
   <div class="py-5 body heading">
     <span class="col-md-3 bg-light" style="font-size : 30pt">新規会員登録</span>
   </div>
@@ -7,66 +8,107 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-
       <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">名前&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-    <%= f.label :last_name, "(姓)" %>&emsp;
-    <%= f.text_field :last_name,placeholder:"令和"%>
-    &emsp;&emsp;&emsp;
-    <%= f.label :first_name, "(名)" %>&emsp;
-    <%= f.text_field :first_name,placeholder:"道子"%>
-  </div>
+    <div class="mx-5" >
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <span class="font-weight-bold">名前</span>
+        </div>
+        <div class="colo-md-9">
+          <%= f.label :last_name, "(姓)",class:"mb-1" %>&emsp;&thinsp;<%= f.text_field :last_name,placeholder:"令和" %>
+          &emsp;&emsp;
+          <%= f.label :first_name, "(名)" %>&emsp;&thinsp;<%= f.text_field :first_name,placeholder:"道子" %>
+        </div>
+      </div>
 
-  <div class="field">フリガナ&emsp;&emsp;&emsp;&emsp;&emsp;
-    <%= f.label :last_name_kana, "(セイ)" %>
-    <%= f.text_field :last_name_kana,placeholder:"レイワ"%>
-    &emsp;&emsp;&emsp;
-    <%= f.label :first_name_kana, "(メイ)" %>
-    <%= f.text_field :first_name_kana,placeholder:"ミチコ"%>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <span class="font-weight-bold">フリガナ</span>
+        </div>
+        <div class="colo-md-9">
+          <%= f.label :last_name_kana, "(セイ)",class:"mb-1" %>&thinsp;<%= f.text_field :last_name_kana,placeholder:"レイワ"%>
+          &emsp;&emsp;
+          <%= f.label :first_name_kana, "(メイ)" %>&thinsp;<%= f.text_field :first_name_kana,placeholder:"ミチコ"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス　　　　" %>&emsp;
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"sample@example.com" %>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <%= f.label :email, "メールアドレス",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"sample@example.com",:size => "57*30" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>&emsp;
-    <%= f.text_field :postal_code,placeholder:"000000"%>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <%= f.label :postal_code, "郵便番号(ハイフンなし)",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.text_field :postal_code,placeholder:"000000"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :address, "住所　　　　　　　　　" %>&emsp;
-    <%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0"%>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <%= f.label :address, "住所",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0",:size => "57*30" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>&emsp;
-    <%= f.text_field :telephone_number,placeholder:"00000000"%>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <%= f.label :telephone_number, "電話番号(ハイフンなし)",class:"font-weight-bold" %>
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.text_field :telephone_number,placeholder:"00000000"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)　</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+              <%= f.label :password, "パスワード",class:"font-weight-bold" %>
+                <% if @minimum_password_length %>
+                <span class="font-weight-bold">(<%= @minimum_password_length %>文字以上)</span>
+                <% end %>
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認用　　　" %>&emsp;
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <%= f.label :password_confirmation, "パスワード確認用",class:"font-weight-bold" %>&emsp;
+        </div>
+        <div class="colo-md-9">
+          &emsp;&emsp;&emsp;<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </div>
 
+      <div class="row mt-3">
+        <div class="col-md-3">
+        </div>
+        <div class="colo-md-9">
+        <div class="actions">
+            &emsp;&emsp;&emsp;<%= f.submit "新規登録",class:"px-5  btn btn-sm btn-success" %>
+        </div>
+        </div>  
+      </div>
 
-
-  <div class="actions">
-    <%= f.submit "新規登録",class:"btn btn-sm btn-success" %>
-  </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+
+  <div class="py-5">
+    <h5><span class="col-md-3 bg-light">既に登録済みの方</span></h5>
+      <div class="pl-5">
+        <p><%= link_to "こちら",new_customer_session_path,:style =>"text-decoration: underline" %>&emsp;からログインしてください。</p>
+      </div>
+  </div>
 
 
   </div>

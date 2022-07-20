@@ -9,24 +9,31 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    #binding.pry
+   #binding.pry
    #@item=Item.find(cart_item_params[:item_id])
-   @cart_item=CartItem.new(cart_item_params)
-   @cart_item.customer_id=current_customer.id
-   if @current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
-     @cart_item = @current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-     @cart_item.amount += params[:cart_item][:amount].to_i
-     if @cart_item.save
-     flash[:notice] = "商品の個数が変更されました！"
-     else
-       flash[:notice] = "1つの種類の商品は10個以上ご注文いただけません。"
+
+    @cart_item=CartItem.new(cart_item_params)
+    @cart_item.customer_id=current_customer.id
+    if params[:cart_item][:amount].empty?
+       flash[:notice] = "個数を選択してください。"
        redirect_to  item_path(@cart_item.item_id) and return
-     end
-   else
-      @cart_item.save
-       flash[:notice] = "カートに商品が追加されました！"
-   end
-    redirect_to cart_items_path and return
+    else
+      if @current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+         @cart_item = @current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+         @cart_item.amount += params[:cart_item][:amount].to_i
+        if @cart_item.save
+           flash[:notice] = "商品の個数が変更されました！"
+        else
+           flash[:notice] = "100個以上ご注文いただけません。"
+           redirect_to  item_path(@cart_item.item_id) and return
+        end
+      else
+         @cart_item.save
+         flash[:notice] = "カートに商品が追加されました！"
+      end
+         redirect_to cart_items_path and return
+    end
+
   end
 
   def destroy
@@ -53,5 +60,5 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
   end
-  
+
 end

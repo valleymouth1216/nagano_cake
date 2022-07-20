@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   def show
     #binding.pry
    # @customer = Customer.find(params[:id])
@@ -17,12 +18,12 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_my_page_path
     else
     render:edit
-    end  
+    end
   end
 
   def unsubscribe
   end
-  
+
     def withdrawal
     @customer=current_customer
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる

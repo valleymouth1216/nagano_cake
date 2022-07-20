@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   get 'admin'=>"admin/homes#top"
 
 
-
-
- #配送先
    scope module: :public do
     resources :addresses,only:[:edit,:create,:index,:update,:destroy]
     resources :items,only:[:index,:show]
@@ -23,7 +20,6 @@ Rails.application.routes.draw do
     get "orders/complete" => "orders#complete"
     resources :orders,only:[:index,:new,:create,:show]
   end
-
 
 
  #顧客の会員
@@ -38,7 +34,7 @@ Rails.application.routes.draw do
 
  devise_for :admin,skip: [:passwords],  controllers: {
   sessions: "admin/sessions",
-   registrations: "admin/registrations"
+  registrations: "admin/registrations"
  }
 
   devise_for :customers,skip: [:passwords], controllers: {
