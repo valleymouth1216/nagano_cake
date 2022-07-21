@@ -4,7 +4,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address=Address.new
-    @addresses =current_customer.addresses.page(params[:page]).per(10)
+    @addresses =current_customer.addresses.all
   end
 
   def create

@@ -6,14 +6,21 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_path
     when Customer
-      customers_my_page_path
+      root_path
     end
 
   end
 
 
+
+
   def after_sign_out_path_for(resource)
+    case resource
+    when :admin   # ログアウト時はシンボルが返ってくる
+      new_admin_session_path
+    when :customer  # ログアウト時はシンボルが返ってくる
       root_path
+    end
   end
 
   protected
